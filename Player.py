@@ -1,4 +1,3 @@
-# As of 2015/07/11
 
 import Graph
 
