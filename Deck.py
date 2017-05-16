@@ -122,7 +122,7 @@ class MCInfectionDeck():
                 self.memory_lists[-1].remove(one_card)
                 self.cleanMemory()
 
-                one_cards.append(one_card)
+                drawn_cards.append(one_card)
             else:
                 one_card = random.choice(self.deck)
                 self.deck.remove(one_card)

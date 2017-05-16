@@ -7,6 +7,9 @@ import random
 from math import *
 
 import time
+# TODO remove clone() / start_code
+# TODO change player move stats to dict
+
 
 class BoardState():
     def __init__(self, board=None, players=None, player_deck=None, infect_deck=None):
@@ -18,7 +21,7 @@ class BoardState():
         self.p_deck = player_deck  # cards and epidemics
         self.i_deck = infect_deck  # memory lists
         self.ending = 2  # =1 when win, =0 when lose , =2 when game is ongoing
-        # Note outbreaks are in MCBoard and cures are in MCPlayer (in the first player)
+        # Note outbreaks are in MCBoard and cures are in MCPlayer (as a class variable)
 
         # Improvements
         self.last_action = None  # keep track of last action/location to pick better actions next
@@ -394,9 +397,9 @@ class BoardState():
             if action[1] != -1:  # checks if epidemic occurred
                 self.i_deck.doEpidemic(action[1], self.board)
 
-            # Win if there are not enough cards in i_deck
+            # Lose if there are not enough cards in i_deck
             if len(self.i_deck.deck) < self.i_deck.infect_rates[self.i_deck.epidemics]:
-                self.ending = 1
+                self.ending = 0
                 return
 
             # Draw infections
